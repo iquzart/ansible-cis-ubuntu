@@ -1,0 +1,20 @@
+#Ansible managed - The file should not be directly edited, Ansible may overwrite the contents.
+
+[sssd]
+domains = {{ realm_domain }}
+config_file_version = 2
+services = nss, pam, sudo
+
+[domain/{{ realm_domain }}]
+ad_domain = {{ realm_domain }}
+krb5_realm = {{ krb5_domain }} 
+realmd_tags = manages-system joined-with-samba
+cache_credentials = True
+id_provider = ad
+krb5_store_password_if_offline = True
+default_shell = /bin/bash
+ldap_id_mapping = True
+use_fully_qualified_names = False
+fallback_homedir = /home/%u@%d
+access_provider = simple
+simple_allow_groups = linux admins, db admins

@@ -1,0 +1,19 @@
+#Ansible managed - The file should not be directly edited, Ansible may overwrite the contents.
+Defaults   !visiblepw
+Defaults    always_set_home
+Defaults    env_reset
+Defaults    env_keep =  "COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS"
+Defaults    env_keep += "MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE"
+Defaults    env_keep += "LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES"
+Defaults    env_keep += "LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE"
+Defaults    env_keep += "LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY"
+Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin
+Defaults    lecture="always"
+Defaults    badpass_message="Password is wrong, please try again"
+Defaults    passwd_tries=5
+Defaults    insults
+Defaults    log_host, log_year, logfile="/var/log/sudo.log"
+Defaults    mail_badpass
+root    ALL=(ALL)       ALL
+%linux\ admins     ALL=(ALL)       ALL
+%Ins_app_admins    ALL=(ALL)  NOPASSWD:   ALL, !/usr/sbin/visudo, !/bin/nano /etc/sudoers, !/usr/bin/vim /etc/sudoers, !/bin/su *root*, !/usr/bin/passwd, !/usr/bin/sudo -s, !/usr/bin/sudo -i, !/usr/bin/sh, !/usr/bin/bash, !/usr/bin/su, !/bin/bash, !/bin/sh, !/usr/bin/vim, !/usr/bin/vi, !/usr/bin/* /etc/sudoers, !/bin/su

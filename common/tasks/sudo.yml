@@ -1,0 +1,10 @@
+---
+- name: sudo | Configure sudo access for System admins and App admins
+  template:
+    src: sudoers.j2
+    dest: /etc/sudoers
+    owner: root
+    group: root
+    mode: 0644
+  tags: ['sudo', 'init','m3_@@5']
+

@@ -1,0 +1,13 @@
+---
+
+- name: Aliases | Enable root mails to SystemAdmins 
+  template:
+    src: aliases.j2
+    dest: /etc/aliases
+    force: yes
+    backup: yes 
+    mode: 0640
+  tags: ['aliases', 'init']
+  notify:
+    - Restart postfix
+

@@ -1,0 +1,23 @@
+---
+- name: PAM | Configuring common-auth
+  copy: 
+    src: files/pam.d/common-auth 
+    dest: /etc/pam.d/common-auth 
+    owner: root 
+    group: root  
+    mode: 0644 
+    backup: yes 
+  tags: ['pam','m3_@@5']
+
+
+- name: PAM | Configuring common-session
+  copy:
+    src: files/pam.d/common-session
+    dest: /etc/pam.d/common-session
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  tags: ['pam', 'm3_@@5']
+
+

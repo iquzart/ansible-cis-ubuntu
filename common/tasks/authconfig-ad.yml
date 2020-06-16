@@ -1,0 +1,42 @@
+---
+
+#- name: YUM | Install identity manager packages
+#  yum: name={{ item }} state=latest
+#  with_items:
+#     - realmd
+#    - sssd
+
+#- name: Discover realm
+#  shell: realm discover --unattended {{ realm_domain}}
+#  changed_when: false
+
+#- name: Join realm
+#  environment:
+#    LANG: en_US.UTF-8
+#  shell: "echo '{{ realmd_password }}' | realm join --unattended --user={{ realmd_username }}@{{ realm_domain }} {{ realm_domain }}"
+#  register: realmd_join
+#  changed_when: not 'Already joined to this domain' in realmd_join.stderr
+#  failed_when: realmd_join.rc != 0 and not 'Already joined to this domain' in realmd_join.stderr
+#  tags: ['realm', 'sssd', 'ad_integration']
+# - debug: var=realmd_join
+#
+- name: Enable service sssd
+  systemd:
+    name: sssd
+    enabled: yes
+    state: started
+#    masked: no
+  tags: ['realm', 'sssd', 'ad_integration','m3_@@5']
+
+- name: Configure sssd
+  template:
+    src: sssd.conf.j2
+    dest: /etc/sssd/sssd.conf
+    force: yes
+    backup: yes
+    owner: root
+    group: root
+    mode: 0600
+  notify: Restart sssd
+  tags: ['m3_@@5', 'sssd', 'ad_integration']
+

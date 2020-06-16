@@ -1,0 +1,24 @@
+---
+
+- name: SNMP | Install snmp packages
+  apt:
+    name: snmpd
+    state: latest
+  tags: ['snmp', 'init','m3_@@5']
+
+- name: SNMP | Enabling the service on boot 
+  service:
+    name: snmpd
+    state: started
+    enabled: yes
+  tags: ['snmp', 'init','m3_@@5']
+
+- name: SNMP | Configuring SNMP to allow access from OpManager
+  template:
+    src: snmpd.conf.j2
+    dest: /etc/snmp/snmpd.conf 
+    mode: 0640
+  tags: ['snmp', 'init','m3_@@5']
+  notify:
+    - Restart snmpd
+

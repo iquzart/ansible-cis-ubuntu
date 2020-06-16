@@ -1,0 +1,18 @@
+---
+# vars file for common
+#
+#
+#
+
+realm_domain:   #Domain name
+krb5_domain:   #realm_domain in caps
+realmd_username: #admin@mydomain.com #admin username
+realmd_password: #admin user password
+OpManager_IP: 
+snmp_string:  
+#smtp_relay_host: smtpdev.meraasdevtest.dxb
+#admin_mail_id: muhammed-ams@meraas.ae
+ansible_managed: Ansible managed - The file should not be directly edited because Ansible may overwrite the contents of the file.
+
+
+ 

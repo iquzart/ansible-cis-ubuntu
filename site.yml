@@ -1,0 +1,9 @@
+---
+- name: Harden Server
+  hosts: ubuntu-node 
+  remote_user: root
+  become: yes
+
+  roles:
+    - Ubuntu1604-CIS
+    - common

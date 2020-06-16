@@ -1,0 +1,12 @@
+---
+# tasks file for common
+#
+#
+#
+#
+
+- include: logs.yml
+- include: sudo.yml
+- include: pam.yml
+#- include: authconfig-ad.yml
+- include: snmp.yml

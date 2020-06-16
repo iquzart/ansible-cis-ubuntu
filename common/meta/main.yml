@@ -1,0 +1,16 @@
+galaxy_info:
+  author: Muhammed Iqbal
+  description: Ubuntu Baseline
+  company: 
+  license: MIT
+  min_ansible_version: 1.2
+  platforms:
+   - name: Ubuntu
+     versions:
+     - 16.04
+     - 18.04
+
+  galaxy_tags: []
+
+
+dependencies: []

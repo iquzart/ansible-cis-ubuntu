@@ -1,0 +1,16 @@
+---
+- name: logs | Enable compression on log rotate
+  replace:  
+      path: /etc/logrotate.conf 
+      regexp: "^#compress"
+      replace: "compress"
+  tags: ['compress', 'm3_@@5']
+
+- name: logs | Create directory to store persistent journal
+  file:
+    path: /var/log/journal
+    state: directory
+  tags: ['journald', 'm3_@@5']
+  notify:
+        - Restart journald service
+  

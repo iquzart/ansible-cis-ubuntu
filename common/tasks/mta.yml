@@ -1,0 +1,21 @@
+---
+
+
+- name: MTA | Enabling postfix service on boot 
+  service:
+    name: postfix
+    state: started
+    enabled: yes
+  tags: ['mta', 'm3_@@5']
+
+- name: MTA | Configuring postfix for relay emails and inet interface
+  template:
+    src: main.cf.j2
+    dest: /etc/postfix/main.cf
+    force: yes
+    backup: yes 
+    mode: 0640
+  tags: ['mta', 'm3_@@5']
+  notify:
+    - Restart postfix
+
